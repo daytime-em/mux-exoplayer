@@ -51,7 +51,9 @@ jobs:
     - name: Upload SDK Artifacts
       uses: actions/upload-artifact@v2
       with:
-        path: "MuxExoPlayer/buildout/outputs/aar"
+        path: | 
+          MuxExoPlayer/buildout/outputs/aar
+          ExoPlayerAdapter/buildout/outputs/aar
         
   unit-tests:
     name: Run Unit Tests
@@ -68,7 +70,9 @@ jobs:
     - name: Download SDK Binaries
       uses: actions/download-artifact@v2
       with:
-        path: "MuxExoPlayer/buildout/outputs/aar"
+        path: | 
+          MuxExoPlayer/buildout/outputs/aar
+          ExoPlayerAdapter/buildout/outputs/aar
     - name: Unit Test ExoPlayerAdapter
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -93,7 +97,9 @@ jobs:
     - name: Download SDK Binaries
       uses: actions/download-artifact@v2
       with:
-        path: "MuxExoPlayer/buildout/outputs/aar"
+        path: | 
+          MuxExoPlayer/buildout/outputs/aar
+          ExoPlayerAdapter/buildout/outputs/aar
     - name: Verify Demo Build
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
