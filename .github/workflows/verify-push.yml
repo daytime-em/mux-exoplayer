@@ -66,7 +66,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Download SDK Binaries
-      uses: actions/upload-artifact@v2
+      uses: actions/download-artifact@v2
       with:
         path: "MuxExoPlayer/buildout/outputs/aar"
     - name: Unit Test ExoPlayerAdapter
@@ -91,7 +91,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Download SDK Binaries
-      uses: actions/upload-artifact@v2
+      uses: actions/download-artifact@v2
       with:
         path: "MuxExoPlayer/buildout/outputs/aar"
     - name: Verify Demo Build
