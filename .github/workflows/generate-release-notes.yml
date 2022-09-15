@@ -1,8 +1,9 @@
 name: Generate Release Notes
 
 on:
-  pull_request:
-# TODO: Only do this on branches with releases/x.x.x
+  push:
+  #pull_request:
+    #types: [opened, reopened]
 
 jobs:
   release-notes:
@@ -10,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
     - name: Generate release Notes
-      run: python .github/workflows/scripts/release-notes.py ${{ github.event.pull_request.number }}
+      uses: daytime-em/pr-releasenote-action@main
 
