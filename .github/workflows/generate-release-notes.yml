@@ -1,0 +1,16 @@
+name: Generate Release Notes
+
+on:
+  pull_request:
+# TODO: Only do this on branches with releases/x.x.x
+
+jobs:
+  release-notes:
+    name: Generate Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Generate release Notes
+      run: python .github/workflows/scripts/release-notes.py ${{ github.event.pull_request.number }}
+
