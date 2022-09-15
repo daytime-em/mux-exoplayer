@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-aars:
-    name: Build & Unit Test SDK AARs
+    name: Build SDK AARs
     runs-on: ubuntu-latest
 
     steps:
