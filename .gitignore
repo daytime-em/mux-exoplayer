@@ -69,3 +69,6 @@ automatedtests/automated_test_results
 # MuxExoPlayer generated files.
 MuxExoPlayer/keys
 MuxExoPlayer/mapping.txt
+node_modules/
+package-lock.json
+package.json
