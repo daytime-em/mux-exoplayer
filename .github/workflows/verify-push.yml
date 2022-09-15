@@ -52,10 +52,8 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         path: | 
-          MuxExoPlayer/buildout/outputs/aar
-          ExoPlayerAdapter/buildout/outputs/aar
-          MuxExoPlayer/buildout/intermediates/**
-          ExoPlayerAdapter/buildout/intermediates/**
+          MuxExoPlayer/buildout/outputs/**
+          ExoPlayerAdapter/buildout/outputs/**
         
   unit-tests:
     name: Run Unit Tests
@@ -73,10 +71,8 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         path: | 
-          MuxExoPlayer/buildout/outputs/aar
-          ExoPlayerAdapter/buildout/outputs/aar
-          MuxExoPlayer/buildout/intermediates/**
-          ExoPlayerAdapter/buildout/intermediates/**
+          MuxExoPlayer/buildout/outputs/**
+          ExoPlayerAdapter/buildout/outputs/**
     - name: Unit Test ExoPlayerAdapter
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -102,10 +98,8 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         path: | 
-          MuxExoPlayer/buildout/outputs/aar
-          ExoPlayerAdapter/buildout/outputs/aar
-          MuxExoPlayer/buildout/intermediates/**
-          ExoPlayerAdapter/buildout/intermediates/**
+          MuxExoPlayer/buildout/outputs/**
+          ExoPlayerAdapter/buildout/outputs/**
     - name: Verify Demo Build
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
