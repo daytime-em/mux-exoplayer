@@ -10,7 +10,7 @@ jobs:
     #if: startsWith(github.head_ref, 'releases/v') && github.event.pull_request.merged
     if: startsWith(github.head_ref, 'releases/v')
     runs-on: ubuntu-latest
-    name: Draft a new release with the release notes from PR (TRY GETTING FROM CONTEXT)
+    name: Draft a new release from PR ${{ github.event.pull_request.title }}
     steps:
      - name: Generate Version for ${{ github.head_ref }}
        id: version
@@ -19,7 +19,7 @@ jobs:
          regex_pattern: v\d+\.\d+\.\d+
          regex_flags: "gim"
          search_string: ${{ github.head_ref }}
-     - name: Draft a release of (TODO TRY GETTING FROM CONTEXT)
+     - name: Draft the release
        uses: actions/create-release@v1
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
