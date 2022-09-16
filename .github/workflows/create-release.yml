@@ -6,11 +6,14 @@ on:
 
 jobs:
   draft:
-    if: startsWith(github.head_ref, 'releases/v') && github.event.pull_request.merged
+    # TODO: Only on merged, once it works
+    #if: startsWith(github.head_ref, 'releases/v') && github.event.pull_request.merged
+    if: startsWith(github.head_ref, 'releases/v')
     runs-on: ubuntu-latest
     name: Draft a new release with the release notes from PR (TRY GETTING FROM CONTEXT)
     steps:
-     - name: Generate Version
+     #- name: Generate Version ${{ github.event.pull_request.pull_request.title }}
+     - name: Generate Version ${{ github.head_ref }}
        id: version
        uses: AsasInnab/regex-action@v1
        with:
