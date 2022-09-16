@@ -25,7 +25,8 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        with:
          tag_name: ${{ steps.version.outputs.first_match }}
-         title: ${{ github.event.pull_request.pull_request.title }}
+         title: ${{ github.event.pull_request.title }}
          release_name: ${{ steps.version.outputs.first_match }}
-         body: ${{ github.event.pull_request.pull_request.body }}
+         body: ${{ github.event.pull_request.body }}
+         commitish: ${{ github.event.pull_request.head.sha }}
          draft: true
