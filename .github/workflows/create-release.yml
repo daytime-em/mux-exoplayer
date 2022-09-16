@@ -17,7 +17,7 @@ jobs:
          regex_pattern: v\d+\.\d+\.\d+
          regex_flags: "gim"
          search_string: ${{ github.head_ref }}
-     - name: Draft the release
+     - name: Create the release
        uses: actions/create-release@v1
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
