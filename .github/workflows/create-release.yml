@@ -12,14 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Draft a new release with the release notes from PR (TRY GETTING FROM CONTEXT)
     steps:
-     #- name: Generate Version ${{ github.event.pull_request.pull_request.title }}
-     - name: Generate Version ${{ github.head_ref }}
+     - name: Generate Version for ${{ github.head_ref }}
        id: version
        uses: AsasInnab/regex-action@v1
        with:
          regex_pattern: v\d+\.\d+\.\d+
          regex_flags: "gim"
-         search_string: ${{ github.event.pull_request.pull_request.title }}
+         search_string: ${{ github.head_ref }}
      - name: Draft a release of (TODO TRY GETTING FROM CONTEXT)
        uses: actions/create-release@v1
        env:
