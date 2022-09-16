@@ -4,7 +4,6 @@
 
 set -e
 
-# All other CI is done on Actions
 docker run -it --rm  \
     -v $(pwd):/data \
     -e BUILDKITE_BRANCH="$BUILDKITE_BRANCH" \
