@@ -79,8 +79,6 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         path: | 
-          MuxExoPlayer/buildout/outputs/**
-          ExoPlayerAdapter/buildout/outputs/**
           epa-intermediates.tar.gz
           mep-intermediates.tar.gz
           epa-generated.tar.gz
