@@ -138,9 +138,9 @@ android {
 }
 
 muxDistribution {
-  def buildKite = System.getenv("BUILDKITE_BRANCH") != null
-  if (buildKite) {
-    devVersion versionFromCommitHash('dev-', System.getenv("BUILDKITE_BRANCH"))
+  def onCi = System.getenv("GITHUB_ACTIONS") != null
+  if (onCi) {
+    devVersion versionFromCommitHash('dev-', System.getenv("GITHUB_REF_NAME"))
   } else {
     devVersion versionFromCommitHash('dev-')
   }
@@ -148,7 +148,7 @@ muxDistribution {
   artifactIds artifactFromFlavorValue('exoplayer')
   groupIds just("com.mux.stats.sdk.muxstats")
 
-  packageJavadocs = buildKite // This takes a while so don't do it for test builds
+  packageJavadocs = onCi // This takes a while so don't do it for test builds
 
   publishIf { it.containsIgnoreCase("release") }
   useArtifactory = true
