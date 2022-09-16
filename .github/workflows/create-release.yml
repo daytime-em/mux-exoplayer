@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Draft a new release from PR ${{ github.event.pull_request.title }}
     steps:
+     - uses: actions/checkout@v2
      - name: Generate Version for ${{ github.head_ref }}
        id: version
        uses: AsasInnab/regex-action@v1
