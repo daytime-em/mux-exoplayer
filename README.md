@@ -27,6 +27,8 @@ you can change anything in here I'm just deleting this fork when i'm done
 api 'com.mux.stats.sdk.muxstats:MuxExoPlayer_(ExoPlayer SDK version with underscores):(Mux SDK version)'
 ```
 
+yay I'm doing automation
+
 Monitor your ExoPlayer
 
 ```groovy
