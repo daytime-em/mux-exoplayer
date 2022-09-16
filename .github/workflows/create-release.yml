@@ -1,8 +1,8 @@
-name: Create Draft Release
+name: Deploy and Create Release
 
 on:
   pull_request:
-    types: [closed]
+    types: [closed] # Also only when PRs are merged, from run-if
 
 jobs:
   draft:
