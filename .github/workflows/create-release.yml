@@ -14,7 +14,7 @@ jobs:
        id: version
        uses: AsasInnab/regex-action@v1
        with:
-         regex_pattern: "v\d+\.\d+\.\d+"
+         regex_pattern: v\d+\.\d+\.\d+
          regex_flags: "gim"
          search_string: ${{ github.event.pull_request.pull_request.title }}
      - name: Draft a release of (TODO TRY GETTING FROM CONTEXT)
