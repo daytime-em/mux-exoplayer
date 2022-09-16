@@ -26,4 +26,3 @@ jobs:
          release_name: ${{ steps.version.outputs.first_match }}
          body: ${{ github.event.pull_request.body }}
          commitish: ${{ github.event.pull_request.head.sha }}
-         draft: true
