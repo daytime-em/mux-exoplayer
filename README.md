@@ -1,5 +1,5 @@
 # Mux Stats SDK ExoPlayer
-
+SFJKASFKJH
 This is the Mux wrapper around ExoPlayer, built on top of Mux's core Java library, providing Mux
 Data performance analytics for applications utilizing
 [Google's ExoPlayer](https://github.com/google/ExoPlayer).
@@ -21,10 +21,14 @@ repositories {
 
 Add a dependency compatible with your version of ExoPlayer. The full list of supported versions can
 be found [here](https://docs.mux.com/guides/data/monitor-exoplayer#1-install-the-mux-data-sdk)
+you can change anything in here I'm just deleting this fork when i'm done
 
 ```groovy
 api 'com.mux.stats.sdk.muxstats:MuxExoPlayer_(ExoPlayer SDK version with underscores):(Mux SDK version)'
 ```
+
+yay I'm doing automation
+I could do one more change
 
 Monitor your ExoPlayer
 
