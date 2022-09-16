@@ -1,0 +1,29 @@
+name: Create Draft Release
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  draft:
+    if: startsWith(github.head_ref, 'releases/v') && github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    name: Draft a new release with the release notes from PR (TRY GETTING FROM CONTEXT)
+    steps:
+     - name: Generate Version
+       id: version
+       uses: AsasInnab/regex-action@v1
+       with:
+         regex_pattern: v\d+\.\d+\.\d+
+         regex_flags: "gim"
+         search_string: ${{ github.event.pull_request.pull_request.title }}
+     - name: Draft a release of (TODO TRY GETTING FROM CONTEXT)
+       uses: actions/create-release@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       with:
+         tag_name: ${{ steps.version.outputs.first_match }}
+         title: ${{ github.event.pull_request.pull_request.title }}
+         release_name: ${{ steps.version.outputs.first_match }}
+         body: ${{ github.event.pull_request.pull_request.body }}
+         draft: true
