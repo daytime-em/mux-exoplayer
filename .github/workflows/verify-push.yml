@@ -85,10 +85,10 @@ jobs:
           mep-generated.tar.gz
     - name: Extract build intermediates
       run: |
-        tar -xzvf epa-intermediates.tar.gz ExoPlayerAdapter/buildout/
-        tar -xzvf mep-intermediates.tar.gz MuxExoPlayer/buildout/
-        tar -xzvf epa-generated.tar.gz ExoPlayerAdapter/buildout/
-        tar -xzvf mep-generated.tar.gz MuxExoPlayer/buildout/
+        tar -xzvf epa-intermediates.tar.gz
+        tar -xzvf mep-intermediates.tar.gz
+        tar -xzvf epa-generated.tar.gz
+        tar -xzvf mep-generated.tar.gz
 
     - name: Unit Test ExoPlayerAdapter
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
@@ -123,10 +123,10 @@ jobs:
           mep-generated.tar.gz
     - name: Extract build intermediates
       run: |
-        tar -xzvf epa-intermediates.tar.gz ExoPlayerAdapter/buildout/
-        tar -xzvf mep-intermediates.tar.gz MuxExoPlayer/buildout/
-        tar -xzvf epa-generated.tar.gz ExoPlayerAdapter/buildout/
-        tar -xzvf mep-generated.tar.gz MuxExoPlayer/buildout/
+        tar -xzvf epa-intermediates.tar.gz
+        tar -xzvf mep-intermediates.tar.gz
+        tar -xzvf epa-generated.tar.gz
+        tar -xzvf mep-generated.tar.gz
 
     - name: Verify Demo Build
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
