@@ -15,6 +15,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+
     - name: Build ExoPlayerAdapter
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -28,6 +29,7 @@ jobs:
         ORG_GRADLE_PROJECT_artifactory_password: ${{ secrets.ARTIFACTORY_PASSWORD }}
         GH_USER: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Build MuxExoPlayer
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -41,14 +43,26 @@ jobs:
         ORG_GRADLE_PROJECT_artifactory_password: ${{ secrets.ARTIFACTORY_PASSWORD }}
         GH_USER: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    # TODO: This isn't enough info for Gradle to reuse anything in subsequent build jobs
+
+    - name: Compress Build Intermediates
+      run: |
+        tar -czvf epa-intermediates.tar.gz ExoPlayerAdapter/buildout/intermediates
+        tar -czvf mep-intermediates.tar.gz MuxExoPlayer/buildout/intermediates
+        tar -czvf epa-generated.tar.gz ExoPlayerAdapter/buildout/generated
+        tar -czvf mep-generated.tar.gz MuxExoPlayer/buildout/generated
+        tar -czvf epa-outputs.tar.gz ExoPlayerAdapter/buildout/outputs
+        tar -czvf mep-outputs.tar.gz MuxExoPlayer/buildout/outputs
     - name: Upload SDK Artifacts
       uses: actions/upload-artifact@v2
       with:
         path: | 
-          MuxExoPlayer/buildout/outputs/**
-          ExoPlayerAdapter/buildout/outputs/**
-        
+          epa-intermediates.tar.gz
+          mep-intermediates.tar.gz
+          epa-generated.tar.gz
+          mep-generated.tar.gz
+          epa-outputs.tar.gz
+          mep-outputs.tar.gz
+
   unit-tests:
     name: Run Unit Tests
     runs-on: ubuntu-latest
@@ -65,8 +79,22 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         path: | 
-          MuxExoPlayer/buildout/outputs/**
-          ExoPlayerAdapter/buildout/outputs/**
+          epa-intermediates.tar.gz
+          mep-intermediates.tar.gz
+          epa-generated.tar.gz
+          mep-generated.tar.gz
+          epa-outputs.tar.gz
+          mep-outputs.tar.gz
+
+    - name: Extract build intermediates
+      run: |
+        tar -xzvf epa-intermediates.tar.gz
+        tar -xzvf mep-intermediates.tar.gz
+        tar -xzvf epa-generated.tar.gz
+        tar -xzvf mep-generated.tar.gz
+        tar -xzvf epa-outputs.tar.gz
+        tar -xzvf mep-outputs.tar.gz
+
     - name: Unit Test ExoPlayerAdapter
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -94,6 +122,17 @@ jobs:
         path: | 
           MuxExoPlayer/buildout/outputs/**
           ExoPlayerAdapter/buildout/outputs/**
+          epa-intermediates.tar.gz
+          mep-intermediates.tar.gz
+          epa-generated.tar.gz
+          mep-generated.tar.gz
+    - name: Extract build intermediates
+      run: |
+        tar -xzvf epa-intermediates.tar.gz
+        tar -xzvf mep-intermediates.tar.gz
+        tar -xzvf epa-generated.tar.gz
+        tar -xzvf mep-generated.tar.gz
+
     - name: Verify Demo Build
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
