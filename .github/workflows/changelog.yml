@@ -3,7 +3,7 @@ name: Add Release Notes to a Release PR
 on:
   pull_request:
     branches:
-      - releases/v*
+      - releases/v**
     types:
       - opened
       - reopened
