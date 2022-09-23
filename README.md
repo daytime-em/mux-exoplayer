@@ -34,6 +34,8 @@ askjhhhh
 muxStatsExoPlayer = MuxStatsExoPlayer(this, myExoPlayer, "demo-player", myCustomerData)
 ```
 
+AFSF
+
 For more
 information, [check out the integration guide](https://docs.mux.com/guides/data/monitor-exoplayer)
 asfkjh
