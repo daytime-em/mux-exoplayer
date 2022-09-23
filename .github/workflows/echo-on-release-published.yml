@@ -12,4 +12,6 @@ jobs:
 
     steps:
       - name: Should only happen when undrafting a release
-        run: echo "ASFLJFLKJ"
+        run: git branch --show-current
+      - name: Try to print a ref too
+        run: git rev-parse --short HEAD
