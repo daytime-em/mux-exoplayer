@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Should only happen when undrafting a release
-        run: git branch --show-current
-      - name: Try to print a ref too
-        run: git rev-parse --short HEAD
+      # Need the git repo for muxDistribution to know the branch (uses git cli)
+      - uses: actions/checkout@v3
       - name: Do we have a branch in the event
         run: echo ${{ github.ref }}
