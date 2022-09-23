@@ -11,5 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Do we have a branch here
-        run: echo ${{ github.head_ref }}
+      - name: Should only happen when undrafting a release
+        run: git branch --show-current
+      - name: Try to print a ref too
+        run: git rev-parse --short HEAD
+      - name: Do we have a branch in the event
+        run: echo ${{ github.ref }}
