@@ -1,0 +1,15 @@
+name: Echo Something because a release was un-drafted
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  echo-it:
+    name: Do the echoing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Should only happen when undrafting a release
+        run: echo "ASFLJFLKJ"
