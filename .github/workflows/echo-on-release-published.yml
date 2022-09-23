@@ -14,11 +14,14 @@ jobs:
       # TODO: Dist Plugin needs to know this is not a dev build & isn't on master.
       # TODO: Maybe we check out master here.
       # our distribution code needs `git branch` to return master. Releases should only be made
-      #  after merging to master so this should be the same
+      #  after merging to master so this should be the same..
+      # TODO: Is it less hacky to put a 'release' env var? Maybe but tired of this
       - uses: actions/checkout@v3
-        with:
-          ref: master
+#        with:
+#          ref: master
       - name: What does git branch say
         run: git branch --show-current
       - name: Do we have a branch in the event
         run: echo ${{ github.ref }}
+      - name: What about a committish
+        run: echo ${{ event.release.target_commitish }}
