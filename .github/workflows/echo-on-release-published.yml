@@ -1,4 +1,4 @@
-name: Echo Something because a release was un-drafted
+name: Deploy to Release
 
 on:
   release:
@@ -15,3 +15,5 @@ jobs:
         run: git branch --show-current
       - name: Try to print a ref too
         run: git rev-parse --short HEAD
+      - name: Do we have a branch in the event
+        run: echo ${{ github.head_ref }}
