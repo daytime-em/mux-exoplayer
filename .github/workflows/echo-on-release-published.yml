@@ -13,5 +13,7 @@ jobs:
     steps:
       # Need the git repo for muxDistribution to know the branch (uses git cli)
       - uses: actions/checkout@v3
+      - name: What does git branch say
+        run: git branch --show-current
       - name: Do we have a branch in the event
         run: echo ${{ github.ref }}
