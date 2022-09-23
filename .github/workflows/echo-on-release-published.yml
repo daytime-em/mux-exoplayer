@@ -11,8 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Need the git repo for muxDistribution to know the branch (uses git cli)
+      # TODO: Dist Plugin needs to know this is not a dev build & isn't on master.
+      # TODO: Maybe we check out master here.
+      # our distribution code needs `git branch` to return master. Releases should only be made
+      #  after merging to master so this should be the same
       - uses: actions/checkout@v3
+        with:
+          ref: master
       - name: What does git branch say
         run: git branch --show-current
       - name: Do we have a branch in the event
